@@ -9,6 +9,7 @@ in vec4 position;
 in vec2 texCoord0;
 
 out Data {
+	vec2 texCoord1;
 	vec3 normal;
 	vec3 l_dir;
 } DataOut;
@@ -68,8 +69,13 @@ void main(void) {
     vec4 pos3 = vec4(position.x-64/K, f3, position.z, 1);
     vec4 pos4 = vec4(position.x+64/K, f4, position.z, 1);
 
+	// Pass-through the texture coordinates
+	DataOut.texCoord1 = texCoord0;
+
+	// Pass-through the normal and light direction
 	DataOut.normal = normalize(m_normal * normalize(cross(vec3(pos2-pos1), vec3(pos4-pos3))));
 	DataOut.l_dir = normalize(vec3(m_view * -l_dir));
 
+	// transform the vertex coordinates
 	gl_Position = m_pvm * pos;
 }
