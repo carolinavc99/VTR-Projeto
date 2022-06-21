@@ -1,14 +1,18 @@
 <?xml version="1.0" ?>
-<project name="Terrain generation" width=512 height=512>
+<project name="Terrain generation" width="512" height="512">
 	<assets>
         <attributes>
             <!-- noise parameters -->
 			<attribute type="COLOR" name="K" data="FLOAT" value=1 />
             <attribute type="COLOR" name="amp" data="FLOAT" value=1000 />
+            <!-- tessellation parameters -->
+            <attribute name="level" data="FLOAT" type="RENDERER" value=1 />
+			<attribute name="alpha" data="FLOAT" type="RENDERER" value=0.75 />
+            <attribute name="tex"   data="FLOAT" type="RENDERER" value=10 />
 		</attributes>
 		<scenes>
 			<scene name="MainScene">
-                <geometry name = "Grid" type = "GRID" LENGTH=5000  DIVISIONS=1000>
+                <geometry name = "Grid" type = "GRID" LENGTH=5000  DIVISIONS=20>
                 </geometry>
 			</scene>
 		</scenes>
@@ -71,7 +75,13 @@
             <var label="K" type="COLOR" context="Terrain::terrain" 
 					component="K" def="min=0 max=3 step=0.1" />
             <var label="amp" type="COLOR" context="Terrain::terrain" 
-					component="amp" def="min=600 max=1100 step=2" />
+					component="amp" def="min=600 max=2100 step=2" />
+            <var label="level" type="RENDERER" context="CURRENT" component="level" 
+                    def="min=1 max=64 step=0.01"/>
+			<var label="alpha" type="RENDERER" context="CURRENT" component="alpha" 
+                    def="min=0 max=2 step=0.01"/>
+			<var label="tex" type="RENDERER" context="CURRENT" component="tex" 
+                    def="min=1 max=15 step=0.1"/>
 		</window>
 	</interface>	
 		

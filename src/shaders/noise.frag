@@ -1,7 +1,7 @@
-#version 330
+#version 410
 
-uniform	vec4 diffuse;
 uniform sampler2D texGrass, texDirt;
+uniform	mat3 m_normal;
 
 
 in Data {
@@ -15,7 +15,7 @@ out vec4 color;
 void main(void) {
     float intensity, inclination;
     intensity = max(0.0, dot(normalize(DataIn.normal), normalize(DataIn.l_dir)));
-    inclination = max(0.0, dot(normalize(DataIn.normal), vec3(0,1,0)));
+    inclination = 0.6 * max(0.0, dot(normalize(DataIn.normal), normalize(m_normal * vec3(0,1,0))));
 
 	//outputF = intensity * diffuse + ambient;
     vec4 texture = (1-inclination) * texture(texDirt, DataIn.texCoord1) + inclination * texture(texGrass, DataIn.texCoord1);

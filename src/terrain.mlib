@@ -2,12 +2,14 @@
 <materialLib name="Terrain">
 
     <textures>
-		<texture name="grass" filename="textures/grass.png" mipmap=true />
+		<texture name="grass" filename="textures/grass.jpg" mipmap=true />
 		<texture name="dirt" filename="textures/dirt.png" mipmap=true />
 	</textures>
 
 	<shaders>
 		<shader name="createTerrain" 	ps="shaders/noise.frag"
+									    tc="shaders/phongTess.tesc"
+									    te="shaders/phongTess.tese"
 										vs="shaders/noise.vert" />
 	</shaders>
 	
@@ -32,16 +34,25 @@
 													component="K" />     
 
                     <valueof uniform="amp"			type="COLOR" context="CURRENT"
-													component="amp" />                            
-                    
-                    <valueof uniform="diffuse"      type="COLOR" context="CURRENT" 
-							                        component="DIFFUSE" />
+													component="amp" /> 
 
-                    <valueof uniform="texGrass"       type="TEXTURE_BINDING" context="CURRENT"
+                    <valueof uniform="texGrass"     type="TEXTURE_BINDING" context="CURRENT"
 							                        component="UNIT" id=0 />
 
-                    <valueof uniform="texDirt"     type="TEXTURE_BINDING" context="CURRENT"
+                    <valueof uniform="texDirt"      type="TEXTURE_BINDING" context="CURRENT"
 							                        component="UNIT" id=1 />
+
+                    <valueof uniform="ilevel" 		type="RENDERER" context="CURRENT" 
+													component="level"  />
+
+                    <valueof uniform="olevel" 		type="RENDERER" context="CURRENT" 
+													component="level"  />
+
+					<valueof uniform="alpha"		type="RENDERER" context="CURRENT"
+													component="alpha"	/>	
+
+                    <valueof uniform="tex"		    type="RENDERER" context="CURRENT"
+													component="tex"	/>		
                 </values>
             </shader>
 			<textures>
