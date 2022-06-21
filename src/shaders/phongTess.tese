@@ -79,11 +79,12 @@ void main() {
 						+ texCoordTC[2] * w);
 
 	float offset = 16/K;
-	vec2 uv =  0.001 * P.xz;
-	vec2 uv1 = uv - 0.001 * vec2(0, offset);
-	vec2 uv2 = uv + 0.001 * vec2(0, offset);
-	vec2 uv3 = uv - 0.001 * vec2(offset, 0);
-	vec2 uv4 = uv + 0.001 * vec2(offset, 0);
+	float scale = 0.001;
+	vec2 uv =  scale * P.xz;
+	vec2 uv1 = uv - scale * vec2(0, offset);
+	vec2 uv2 = uv + scale * vec2(0, offset);
+	vec2 uv3 = uv - scale * vec2(offset, 0);
+	vec2 uv4 = uv + scale * vec2(offset, 0);
 
     float f  = getheight(uv);
     float f1 = getheight(uv1);
