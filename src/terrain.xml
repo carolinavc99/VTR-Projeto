@@ -3,9 +3,12 @@
 	<assets>
         <attributes>
             <attribute name="tex"   data="FLOAT" type="RENDERER" value=10 />
-            <!-- noise parameters -->
+            <!-- simple perlin noise parameters -->
 			<attribute type="COLOR" name="K" data="FLOAT" value=1 />
             <attribute type="COLOR" name="amp" data="FLOAT" value=1000 />
+            <!-- fractal perlin noise parameters -->
+			<attribute type="COLOR" name="K2" data="FLOAT" value=1 />
+            <attribute type="COLOR" name="amp2" data="FLOAT" value=1000 />
             <!-- tessellation parameters -->
             <attribute name="level" data="FLOAT" type="RENDERER" value=10 />
 			<attribute name="alpha" data="FLOAT" type="RENDERER" value=0.75 />
@@ -47,9 +50,9 @@
 	
 	<pipelines>
 	
-        <pipeline name="terrain" defaultCamera = "MainCamera">
+        <pipeline name="simple perlin" defaultCamera = "MainCamera">
 		
-			<pass class="default" name="create terrain" >
+			<pass class="default" name="simple perlin" >
 				<scenes>
 					<scene name="MainScene" />
 				</scenes>
@@ -60,11 +63,28 @@
 				</lights>
 				<materialMaps>
 					<map fromMaterial="*" 
-                                toMaterial="terrain"  toLibrary="Terrain" />
+                                toMaterial="simplePerlin"  toLibrary="Terrain" />
 				</materialMaps>
 			</pass>
 		</pipeline>
 
+		<pipeline name="fractal perlin" defaultCamera = "MainCamera">
+		
+			<pass class="default" name="fractal Perlin" >
+				<scenes>
+					<scene name="MainScene" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="*" 
+                                toMaterial="fractalPerlin"  toLibrary="Terrain" />
+				</materialMaps>
+			</pass>
+		</pipeline>
     </pipelines>
 
 	
@@ -72,9 +92,9 @@
 		<window label="settings" >
 			<pipelineList label="effect" />
 
-            <var label="K" type="COLOR" context="Terrain::terrain" 
+            <var label="K" type="COLOR" context="CURRENT" 
 					component="K" def="min=0 max=3 step=0.1" />
-            <var label="amp" type="COLOR" context="Terrain::terrain" 
+            <var label="amp" type="COLOR" context="CURRENT" 
 					component="amp" def="min=600 max=2100 step=2" />
             <var label="level" type="RENDERER" context="CURRENT" component="level" 
                     def="min=1 max=64 step=0.01"/>
