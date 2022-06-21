@@ -27,8 +27,12 @@ vec2 grad( ivec2 z )  // replace this anything that returns a random vector
     n = (n*(n*n*15731+789221)+1376312589)>>16;
 
 
-    // simple random vectors
-    return vec2(cos(float(n)),sin(float(n)));
+   // Perlin style vectors
+    n &= 7;
+    vec2 gr = vec2(n&1,n>>1)*2.0-1.0;
+    return ( n>=6 ) ? vec2(0.0,gr.x) : 
+           ( n>=4 ) ? vec2(gr.x,0.0) :
+                              gr;
 
 
 }

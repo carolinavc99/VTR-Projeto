@@ -2,17 +2,17 @@
 <project name="Terrain generation" width="512" height="512">
 	<assets>
         <attributes>
+            <attribute name="tex"   data="FLOAT" type="RENDERER" value=10 />
             <!-- noise parameters -->
 			<attribute type="COLOR" name="K" data="FLOAT" value=1 />
             <attribute type="COLOR" name="amp" data="FLOAT" value=1000 />
             <!-- tessellation parameters -->
-            <attribute name="level" data="FLOAT" type="RENDERER" value=1 />
+            <attribute name="level" data="FLOAT" type="RENDERER" value=10 />
 			<attribute name="alpha" data="FLOAT" type="RENDERER" value=0.75 />
-            <attribute name="tex"   data="FLOAT" type="RENDERER" value=10 />
 		</attributes>
 		<scenes>
 			<scene name="MainScene">
-                <geometry name = "Grid" type = "GRID" LENGTH=5000  DIVISIONS=20>
+                <geometry name = "Grid" type = "GRID" LENGTH=5000  DIVISIONS=100>
                 </geometry>
 			</scene>
 		</scenes>
