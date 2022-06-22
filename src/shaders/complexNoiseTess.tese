@@ -57,7 +57,7 @@ float fractalperlinnoise31(vec3 p, float amplitude, float frequency, float gain,
 }
 
 float getheight( in vec2 uv ) {
-    int octaves = 8;
+    int octaves = 16;
     vec3 offs = vec3(
         fractalperlinnoise31(vec3(uv, 0.0) + 697.486, 0.5, 1.0, 0.5, 2.0, octaves),
         fractalperlinnoise31(vec3(uv, 0.0) + 120.165, 0.5, 1.0, 0.5, 2.0, octaves),

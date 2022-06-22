@@ -10,7 +10,6 @@
             <attribute type="COLOR" name="amp2" data="FLOAT" value=1000 />
             <!-- tessellation parameters -->
             <attribute name="level" data="FLOAT" type="RENDERER" value=10 />
-			<attribute name="alpha" data="FLOAT" type="RENDERER" value=0.75 />
 		</attributes>
 		<scenes>
 			<scene name="MainScene">
@@ -49,9 +48,9 @@
 	
 	<pipelines>
 	
-        <pipeline name="simple perlin" defaultCamera = "MainCamera">
+        <pipeline name="simple noise function" defaultCamera = "MainCamera">
 		
-			<pass class="default" name="simple perlin" >
+			<pass class="default" name="simple noise" >
 				<scenes>
 					<scene name="MainScene" />
 				</scenes>
@@ -62,14 +61,14 @@
 				</lights>
 				<materialMaps>
 					<map fromMaterial="*" 
-                                toMaterial="simplePerlin"  toLibrary="Terrain" />
+                                toMaterial="simpleNoise"  toLibrary="Terrain" />
 				</materialMaps>
 			</pass>
 		</pipeline>
 
-		<pipeline name="fractal perlin" defaultCamera = "MainCamera">
+		<pipeline name="complex noise function" defaultCamera = "MainCamera">
 		
-			<pass class="default" name="fractal Perlin" >
+			<pass class="default" name="complex noise" >
 				<scenes>
 					<scene name="MainScene" />
 				</scenes>
@@ -80,7 +79,7 @@
 				</lights>
 				<materialMaps>
 					<map fromMaterial="*" 
-                                toMaterial="fractalPerlin"  toLibrary="Terrain" />
+                                toMaterial="complexNoise"  toLibrary="Terrain" />
 				</materialMaps>
 			</pass>
 		</pipeline>
@@ -91,16 +90,14 @@
 		<window label="settings" >
 			<pipelineList label="effect" />
 
-            <var label="K" type="COLOR" context="Terrain::simplePerlin" 
+            <var label="K" type="COLOR" context="Terrain::simpleNoise" 
 					component="K" def="min=0 max=3 step=0.1" />
-            <var label="amp1" type="COLOR" context="Terrain::simplePerlin" 
+            <var label="amp1" type="COLOR" context="Terrain::simpleNoise" 
 					component="amp1" def="min=600 max=2100 step=2" />
-            <var label="amp2" type="COLOR" context="Terrain::fractalPerlin" 
+            <var label="amp2" type="COLOR" context="Terrain::complexNoise" 
 					component="amp2" def="min=600 max=2100 step=2" />
             <var label="level" type="RENDERER" context="CURRENT" component="level" 
                     def="min=1 max=64 step=0.01"/>
-			<var label="alpha" type="RENDERER" context="CURRENT" component="alpha" 
-                    def="min=0 max=2 step=0.01"/>
 			<var label="tex" type="RENDERER" context="CURRENT" component="tex" 
                     def="min=1 max=15 step=0.1"/>
 		</window>

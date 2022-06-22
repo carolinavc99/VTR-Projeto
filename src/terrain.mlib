@@ -7,21 +7,21 @@
 	</textures>
 
 	<shaders>
-		<shader name="simplePerlin" 	ps="shaders/display.frag"
+		<shader name="simpleNoise" 	ps="shaders/display.frag"
 									    tc="shaders/tess.tesc"
-									    te="shaders/perlinTess.tese"
+									    te="shaders/simpleNoiseTess.tese"
 										vs="shaders/model.vert" />
 										
-		<shader name="fractalPerlin" 	ps="shaders/display.frag"
+		<shader name="complexNoise" 	ps="shaders/display.frag"
 									    tc="shaders/tess.tesc"
-									    te="shaders/fractalTess.tese"
+									    te="shaders/complexNoiseTess.tese"
 										vs="shaders/model.vert" />
 	</shaders>
 	
 	<materials>
 		
-		<material name="simplePerlin" >
-			<shader name="simplePerlin" >
+		<material name="simpleNoise" >
+			<shader name="simpleNoise" >
 				<values>
                     <valueof uniform="m_pvm" 	    type="RENDERER" context="CURRENT" 
 											        component="PROJECTION_VIEW_MODEL"  />	
@@ -63,8 +63,8 @@
 			</textures>
 		</material>	
 
-		<material name="fractalPerlin" >
-			<shader name="fractalPerlin" >
+		<material name="complexNoise" >
+			<shader name="complexNoise" >
 				<values>
                     <valueof uniform="m_pvm" 	    type="RENDERER" context="CURRENT" 
 											        component="PROJECTION_VIEW_MODEL"  />	
