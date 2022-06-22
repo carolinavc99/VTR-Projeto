@@ -21,5 +21,6 @@ void main(void) {
     //vec4 texture = (1-inclination) * texture(texDirt, DataIn.texCoord1) + inclination * texture(texGrass, DataIn.texCoord1);
 	vec4 texture = mix(texture(texDirt, DataIn.texCoord1), texture(texGrass, DataIn.texCoord1), inclination);
 	color = clamp((intensity + 0.25) * texture, 0, 1);
+	//color = clamp((intensity + 0.25) * vec4(1,1,1,1), 0, 1);
 
 }
