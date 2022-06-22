@@ -5,7 +5,7 @@ layout(triangles, fractional_odd_spacing, ccw) in;
 uniform	mat4 m_pvm, m_view;
 uniform	mat3 m_normal;
 uniform vec4 l_dir;
-uniform float K, amp, tex;
+uniform float K, amp2, tex;
 
 
 in vec2 texCoordTC[];
@@ -57,11 +57,11 @@ float fractalperlinnoise31(vec3 p, float amplitude, float frequency, float gain,
 }
 
 float getheight( in vec2 uv ) {
-
+    int octaves = 8;
     vec3 offs = vec3(
-        fractalperlinnoise31(vec3(uv, 0.0) + 697.486, 0.5, 1.0, 0.5, 2.0, 16),
-        fractalperlinnoise31(vec3(uv, 0.0) + 120.165, 0.5, 1.0, 0.5, 2.0, 16),
-        fractalperlinnoise31(vec3(uv, 0.0) + 892.858, 0.5, 1.0, 0.5, 2.0, 16)
+        fractalperlinnoise31(vec3(uv, 0.0) + 697.486, 0.5, 1.0, 0.5, 2.0, octaves),
+        fractalperlinnoise31(vec3(uv, 0.0) + 120.165, 0.5, 1.0, 0.5, 2.0, octaves),
+        fractalperlinnoise31(vec3(uv, 0.0) + 892.858, 0.5, 1.0, 0.5, 2.0, octaves)
     ) * 2.0 * (0.5 + (0.5 * perlinnoise31(vec3(uv, 526.628))));
 
     float smoothen = 0.5 + (0.5 * perlinnoise31(vec3(uv * 0.5, 0.0) + 259.562));
@@ -74,7 +74,7 @@ float getheight( in vec2 uv ) {
 
     result *= 1.6;
 
-    return amp * amp * result * result * result;
+    return amp2 * 3 * result * result * result;
 }
 
 void main() {
@@ -92,7 +92,7 @@ void main() {
 						+ texCoordTC[1] * v
 						+ texCoordTC[2] * w);
 
-	float offset = 16/K;
+	float offset = 16;
 	float scale = 0.001;
 	vec2 uv =  scale * P.xz;
 	vec2 uv1 = uv - scale * vec2(0, offset);

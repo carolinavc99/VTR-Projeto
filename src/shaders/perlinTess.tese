@@ -5,7 +5,7 @@ layout(triangles, fractional_odd_spacing, ccw) in;
 uniform	mat4 m_pvm, m_view;
 uniform	mat3 m_normal;
 uniform vec4 l_dir;
-uniform float K, amp, tex;
+uniform float K, amp1, tex;
 
 
 in vec2 texCoordTC[];
@@ -51,6 +51,7 @@ float noise( in vec2 p )
                      dot( grad( i+ivec2(1,1) ), f-vec2(1.0,1.0) ), u.x), u.y);
 }
 
+
 float getheight( in vec2 uv ) {
     mat2 m = mat2 (1.6, 1.2, -1.2, 1.6);
     float f = 0.0;
@@ -60,7 +61,7 @@ float getheight( in vec2 uv ) {
     f += 0.0625*noise(K * uv); uv = m*uv;
     f += 0.03125*noise(K * uv);
 
-    return amp * f;
+    return amp1 * f;
 }
 
 void main() {

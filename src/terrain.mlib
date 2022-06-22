@@ -38,8 +38,8 @@
                     <valueof uniform="K"			type="COLOR" context="CURRENT"
 													component="K" />     
 
-                    <valueof uniform="amp"			type="COLOR" context="CURRENT"
-													component="amp" /> 
+                    <valueof uniform="amp1"			type="COLOR" context="CURRENT"
+													component="amp1" /> 
 
                     <valueof uniform="texGrass"     type="TEXTURE_BINDING" context="CURRENT"
 							                        component="UNIT" id=0 />
@@ -76,13 +76,10 @@
 											        component="VIEW"  />	
 												
 					<valueof uniform="l_dir"	    type="LIGHT" context="Sun"
-											        component="DIRECTION"/>
-                    
-                    <valueof uniform="K"			type="COLOR" context="CURRENT"
-													component="K" />     
+											        component="DIRECTION"/>  
 
-                    <valueof uniform="amp"			type="COLOR" context="CURRENT"
-													component="amp" /> 
+                    <valueof uniform="amp2"			type="COLOR" context="CURRENT"
+													component="amp2" /> 
 
                     <valueof uniform="texGrass"     type="TEXTURE_BINDING" context="CURRENT"
 							                        component="UNIT" id=0 />

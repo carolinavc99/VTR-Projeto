@@ -18,7 +18,8 @@ void main(void) {
     inclination = 0.6 * max(0.0, dot(normalize(DataIn.normal), normalize(m_normal * vec3(0,1,0))));
 
 	//outputF = intensity * diffuse + ambient;
-    vec4 texture = (1-inclination) * texture(texDirt, DataIn.texCoord1) + inclination * texture(texGrass, DataIn.texCoord1);
-	color = (intensity + 0.25) * texture;
+    //vec4 texture = (1-inclination) * texture(texDirt, DataIn.texCoord1) + inclination * texture(texGrass, DataIn.texCoord1);
+	vec4 texture = mix(texture(texDirt, DataIn.texCoord1), texture(texGrass, DataIn.texCoord1), inclination);
+	color = clamp((intensity + 0.25) * texture, 0, 1);
 
 }
