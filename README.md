@@ -1,7 +1,5 @@
 Project for VTR, 2022. Terrain generation in Nau3D.
 
-[Report]()
-
 # Authors
 * [Rui Dias](https://github.com/RD-jpxfr)
 * [Dinis Gomes](https://github.com/radjee)
